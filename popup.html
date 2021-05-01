@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meet Notify</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,400,700'>
+    <link rel="stylesheet" href="./style.css">
+
+
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+
+    <body>
+        <div class="container">
+            <br>
+
+            <div class="twelve">
+
+                <h1>Meet Notify</h1>
+            </div>
+            <h4>Developed with 💝 by <a href="https://github.com/uttusharma" target="_blank">Utkarsh Sharma</a></h4>
+            <h3>Add a keyword</h3>
+            <p>
+                <input id="new-task" type="text"><button>Add</button>
+            </p>
+
+            <h3>Keywords to be listened in the chat</h3>
+            <ul id="incomplete-tasks">
+                <li><input type="checkbox"><label>Attendance</label><input type="text"><button
+                        class="edit">Edit</button><button class="delete">Delete</button></li>
+                <li><input type="checkbox"><label>Present</label><input type="text" value="Present"><button
+                        class="edit">Edit</button><button class="delete">Delete</button></li>
+                <li><input type="checkbox"><label>Present Mam</label><input type="text" value="Present Mam"><button
+                        class="edit">Edit</button><button class="delete">Delete</button></li>
+                <li><input type="checkbox"><label>Present Sir</label><input type="text" value="Present Sir"><button
+                        class="edit">Edit</button><button class="delete">Delete</button></li>
+            </ul>
+            <h3>Disabled Keywords</h3>
+            <ul id="completed-tasks">
+                <li><input type="checkbox" checked><label>Mam time hogaya</label><input type="text"><button
+                        class="edit">Edit</button><button class="delete">Delete</button></li>
+            </ul>
+            <center>
+                <div class="button__wrap">
+
+                    <button id="cleanerbtn" class="button" style="--hue: 500">Reset Notifications</button>
+                    <div class="button__shadow"></div>
+                </div>
+        </div>
+
+        </center>
+
+    </body>
+    <!-- partial -->
+    <script src="./popup.js"></script>
+
+</body>
+
+</html>

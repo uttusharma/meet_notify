@@ -1,0 +1,61 @@
+{
+    "name": "Meet Notify",
+    "description": "This Extension will notify whenever a certain keyword arrives in meet chat.",
+    "version": "0.1.0",
+    "manifest_version": 2,
+    "icons": {
+        "16": "./icon-16x16.png",
+        "32": "./icon-32x32.png",
+        "48": "./icon-48x48.png",
+        "128": "./icon-128x128.png"
+    },
+    "background": {
+        "scripts": [
+            "./background.js"
+        ],
+        "persistent": false
+    },
+    "externally_connectable": {
+        "matches": [
+            "https://meet.google.com/*"
+        ],
+        "exclude_matches": [
+            "https://meet.google.com/*/quality*"
+        ]
+    },
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "matches": [
+                "https://meet.google.com/*"
+            ],
+            "exclude_matches": [
+                "https://meet.google.com/*/quality*"
+            ],
+            "css": [
+                "style.css"
+            ],
+            "js": [
+                "foreground.js"
+            ]
+        }
+    ],
+    "page_action": { 
+		"matches": [
+			 "https://meet.google.com/*",
+             "http://meet.google.com//*"
+		],
+		"default_icon": {
+            "16": "./icon-16x16.png",
+            "32": "./icon-32x32.png"
+		},
+        "default_popup": "popup.html"  
+    },
+    "options_page": "./options.html",
+    "permissions": [
+        "tabs",
+        "https://meet.google.com//*",
+        "notifications",
+        "storage"
+    ]
+}

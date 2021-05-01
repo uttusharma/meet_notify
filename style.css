@@ -1,0 +1,281 @@
+/* Basic Style */
+
+body {
+	background: #fff;
+	color: #333;
+	font-family: Lato, sans-serif;
+	background-color: #e4e4e4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container {
+	display: block;
+	width: 400px;
+	margin: 10px auto 10px;
+	background-color: #fff;
+	padding: 0px 10px 10px 10px;
+	border-radius: 10px;
+}
+
+h2 {
+	text-align: center;
+	padding-top: 10px;
+	margin-bottom: 0px;
+}
+
+h4 {
+	text-align: center;
+	padding-bottom: 10px;
+	margin-bottom: 0px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li * {
+	float: left;
+}
+
+li,
+h3 {
+	clear: both;
+	list-style: none;
+}
+
+input,
+button {
+	outline: none;
+}
+
+button {
+	background: none;
+	border: 0px;
+	color: #888;
+	font-size: 15px;
+	width: 60px;
+	margin: 10px 0 0;
+	font-family: Lato, sans-serif;
+	cursor: pointer;
+}
+
+button:hover {
+	color: #333;
+}
+
+/* Heading */
+
+h3,
+label[for="new-task"] {
+	color: #333;
+	font-weight: 700;
+	font-size: 15px;
+	border-bottom: 2px solid #333;
+	padding: 20px 0 10px;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+input[type="text"] {
+	margin: 0;
+	font-size: 18px;
+	line-height: 18px;
+	height: 18px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	background: #fff;
+	border-radius: 6px;
+	font-family: Lato, sans-serif;
+	color: #888;
+}
+
+input[type="text"]:focus {
+	color: #333;
+}
+
+/* New Task */
+
+label[for="new-task"] {
+	display: block;
+	margin: 0 0 20px;
+}
+
+input#new-task {
+	float: left;
+	width: 318px;
+}
+
+p > button:hover {
+	color: #0fc57c;
+}
+
+/* Task list */
+
+li {
+	overflow: hidden;
+	padding: 20px 0;
+	border-bottom: 1px solid #eee;
+}
+
+li > input[type="checkbox"] {
+	margin: 0 10px;
+	position: relative;
+	top: 15px;
+}
+
+li > label {
+	font-size: 18px;
+	line-height: 40px;
+	width: 237px;
+	padding: 0 0 0 11px;
+}
+
+li > input[type="text"] {
+	width: 226px;
+}
+
+li > .delete:hover {
+	color: #cf2323;
+}
+
+/* Completed */
+
+#completed-tasks label {
+	text-decoration: line-through;
+	color: #888;
+}
+
+/* Edit Task */
+
+ul li input[type="text"] {
+	display: none;
+}
+
+ul li.editMode input[type="text"] {
+	display: block;
+}
+
+ul li.editMode label {
+	display: none;
+}
+
+
+.twelve h1 {
+	font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:160px; text-align:center; margin:auto; white-space:nowrap; padding-bottom:13px;
+  }
+  .twelve h1:before {
+	  background-color: #c50000;
+	  content: '';
+	  display: block;
+	  height: 3px;
+	  width: 75px;
+	  margin-bottom: 5px;
+  }
+
+
+
+.button {
+	--y: -25;
+	--x: 0;
+	--rotation: 0;
+	--speed: 2;
+	--txt: "Reset Notifications";
+	--padding: 1rem 1.25rem;
+	cursor: pointer;
+	width: 100%;
+	padding: var(--padding);
+	color: transparent;
+	font-weight: bold;
+	font-size: 1.25rem;
+	transition: background 0.1s ease;
+	background: hsl(var(--hue), 100%, 50%);
+	outline-color: hsl(var(--hue), 100%, 80%);
+	-webkit-animation-name: flow-and-shake;
+			animation-name: flow-and-shake;
+	-webkit-animation-duration: calc(var(--speed) * 1s);
+			animation-duration: calc(var(--speed) * 1s);
+	-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease-in-out;
+			animation-timing-function: ease-in-out;
+  }
+  .button:after {
+	content: var(--txt);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: var(--padding);
+	color: #fff;
+  }
+  .button:hover {
+	background: hsl(var(--hue), 100%, 40%);
+	--speed: 0.1;
+	--rotation: -1;
+	--y: -1;
+	--x: 1;
+	--txt: "Reset Notifications";
+  }
+  .button:active {
+	--speed: 4;
+	--x: 0;
+	--y: 5;
+	--rotation: 0;
+	--txt: "Ahhhh...";
+	background: hsl(var(--hue), 100%, 30%);
+  }
+  .button__wrap {
+	position: relative;
+  }
+  .button__shadow {
+	position: absolute;
+	border-radius: 100%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: #af9d9d;
+	-webkit-animation: shadow 2s infinite ease-in-out;
+			animation: shadow 2s infinite ease-in-out;
+	z-index: -1;
+  }
+  @-webkit-keyframes shadow {
+	0%, 100% {
+	  transform: scaleX(1);
+	  opacity: 1;
+	}
+	50% {
+	  opacity: 0.2;
+	  transform: scaleX(0.25);
+	}
+  }
+  @keyframes shadow {
+	0%, 100% {
+	  transform: scaleX(1);
+	  opacity: 1;
+	}
+	50% {
+	  opacity: 0.2;
+	  transform: scaleX(0.25)
+	}
+}
+@-webkit-keyframes flow-and-shake {
+  0%, 100% {
+    transform: translate(calc(var(--x) * -1%), 0) rotate(calc(var(--rotation) * -1deg));
+  }
+  50% {
+    transform: translate(calc(var(--x) * 1%), calc(var(--y) * 1%)) rotate(calc(var(--rotation) * 1deg));
+  }
+}
+@keyframes flow-and-shake {
+  0%, 100% {
+    transform: translate(calc(var(--x) * -1%), 0) rotate(calc(var(--rotation) * -1deg));
+  }
+  50% {
+    transform: translate(calc(var(--x) * 1%), calc(var(--y) * 1%)) rotate(calc(var(--rotation) * 1deg));
+  }
+}
