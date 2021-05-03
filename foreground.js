@@ -14,8 +14,12 @@ for (let i = 0; i < chats.length; i++) {
     chatTexts.push(text);
 }
 
+chrome.runtime.sendMessage({
+    message: "loaded",
+});
 
 chrome.runtime.sendMessage({
+    message: "chats",
     chats_list: chatTexts
 });
 
@@ -28,7 +32,6 @@ chrome.runtime.onMessage.addListener(function (response, sendResponse) {
     }
 });
 
-alert("Meet Notify Loaded Successfully!");
 
 let observer = new MutationObserver(mutations => {
 
@@ -36,13 +39,17 @@ let observer = new MutationObserver(mutations => {
         let check = '';
         for (let addedNode of mutation.addedNodes) {
             if (addedNode.nodeName === 'DIV') {
+
                 let int_chat = addedNode.querySelector('.Zmm6We');
                 if (int_chat && int_chat.lastChild) {
                     let int_text = int_chat.lastChild.getAttribute('data-message-text');
                     // console.log(int_text);
                     if (check != int_text) {
+                        console.log("Added Node : ", addedNode);
+
                         chatTexts.push(int_text);
                         chrome.runtime.sendMessage({
+                            message: "chats",
                             chats_list: chatTexts
                         });
                         check = int_text;
@@ -51,6 +58,8 @@ let observer = new MutationObserver(mutations => {
                     let vnt_chat = addedNode.getAttribute('data-message-text');
                     if (vnt_chat) {
                         // console.log(vnt_chat);
+
+                        console.log("Added Node 2 : ", addedNode);
                         if (chatTexts.indexOf(vnt_chat) === -1) {
                             chatTexts.push(vnt_chat);
                             chrome.runtime.sendMessage({
