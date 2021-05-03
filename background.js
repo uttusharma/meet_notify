@@ -1,33 +1,33 @@
-var port;
+// var port;
 
-// Attempt to reconnect
-var reconnectToExtension = function () {
-    // Reset port
-    port = null;
-    // Attempt to reconnect after 1 second
-    setTimeout(connectToExtension, 1000 * 1);
-};
+// // Attempt to reconnect
+// var reconnectToExtension = function () {
+//     // Reset port
+//     port = null;
+//     // Attempt to reconnect after 1 second
+//     setTimeout(connectToExtension, 1000 * 1);
+// };
 
-// Attempt to connect
-var connectToExtension = function () {
+// // Attempt to connect
+// var connectToExtension = function () {
 
-    // Make the connection
-    port = chrome.runtime.connect({
-        name: "my-port"
-    });
+//     // Make the connection
+//     port = chrome.runtime.connect({
+//         name: "my-port"
+//     });
 
-    // When extension is upgraded or disabled and renabled, the content scripts
-    // will still be injected, so we have to reconnect them.
-    // We listen for an onDisconnect event, and then wait for a second before
-    // trying to connect again. Becuase chrome.runtime.connect fires an onDisconnect
-    // event if it does not connect, an unsuccessful connection should trigger
-    // another attempt, 1 second later.
-    port.onDisconnect.addListener(reconnectToExtension);
+//     // When extension is upgraded or disabled and renabled, the content scripts
+//     // will still be injected, so we have to reconnect them.
+//     // We listen for an onDisconnect event, and then wait for a second before
+//     // trying to connect again. Becuase chrome.runtime.connect fires an onDisconnect
+//     // event if it does not connect, an unsuccessful connection should trigger
+//     // another attempt, 1 second later.
+//     port.onDisconnect.addListener(reconnectToExtension);
 
-};
+// };
 
 // Connect for the first time
-connectToExtension();
+// connectToExtension();
 
 var chats_text = [];
 var user_keywords = [];
@@ -118,7 +118,6 @@ chrome.runtime.onMessage.addListener(function (request, response, _sendResponse)
             iconUrl: '/icon-128x128.png',
             type: 'basic'
         });
-    notifications_seen.push(body);
     getLocalKeywords();
     matchKeywords();
     console.log(chats_text);
