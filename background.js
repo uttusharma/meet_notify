@@ -26,7 +26,9 @@ function searchMeetTabClean() {
         tabs.forEach(function (tab) {
             if (/^https:\/\/meet\.google/.test(tab.url)) {
                 console.log("Found a meet tab");
-                chrome.tabs.sendMessage(tab.id,{message : "clean"}); 
+                chrome.tabs.sendMessage(tab.id, {
+                    message: "clean"
+                });
             }
         });
     });
@@ -75,8 +77,7 @@ function matchKeywords() {
 chrome.runtime.onMessage.addListener(function (request, response, _sendResponse) {
     if (request.message === "activate_icon") {
         chrome.pageAction.show(response.tab.id);
-    }
-    else
+    } else
     if (request.chats_list && request.chats_list.length > chats_text.length)
         chats_text = request.chats_list;
     getLocalKeywords();
@@ -85,34 +86,35 @@ chrome.runtime.onMessage.addListener(function (request, response, _sendResponse)
 });
 
 
-chrome.extension.onConnect.addListener(function(port) {
+chrome.extension.onConnect.addListener(function (port) {
 
-    port.onMessage.addListener(function(msg) {
-        if (msg.message === "clean")
-        {
+    port.onMessage.addListener(function (msg) {
+        if (msg.message === "clean") {
             chats_text = [];
             notifications_seen = [];
             searchMeetTabClean();
         }
-       
+
     });
 });
 
 
 
 
-// chrome.tabs.onRemoved.addListener(function (tabId) {
-
-// });
+chrome.tabs.onRemoved.addListener(function (tabId) {
+    chats_text = [];
+    notifications_seen = [];
+    console.log("Close Triggered");
+});
 
 
 // chrome.runtime.onInstalled.addListener(function () {
 //     searchMeetTab();
 // });
 
-// chrome.runtime.onStartup.addListener(function () {
-//     searchMeetTab();
-// });
+chrome.runtime.onStartup.addListener(function () {
+    console.log("Startup Triggered");
+});
 
 
 // //start a timer of 100 seconds on Sheets API call. After call again unless subscribed.
