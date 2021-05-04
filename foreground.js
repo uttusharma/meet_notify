@@ -1,5 +1,6 @@
-let keywords = [];
-let chatTexts = [];
+var observing = false
+var keywords = [];
+var chatTexts = [];
 
 chrome.runtime.sendMessage({
     "message": "activate_icon"
@@ -33,10 +34,11 @@ chrome.runtime.onMessage.addListener(function (response, sendResponse) {
 });
 
 
-let observer = new MutationObserver(mutations => {
 
+function setChatObserver(mutations) {
+
+    observing = true;
     for (let mutation of mutations) {
-
         for (let addedNode of mutation.addedNodes) {
             if (addedNode.nodeName === 'DIV') {
 
@@ -71,11 +73,20 @@ let observer = new MutationObserver(mutations => {
                         }
                     }
                 }
+
             }
         }
-    }
 
-});
+    }
+}
+
+
+
+
+var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+const observer = new MutationObserver(setChatObserver);
+
+
 
 
 // configuration of the observer:
