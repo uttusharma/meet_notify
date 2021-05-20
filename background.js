@@ -81,8 +81,8 @@ function showNotification(body) {
     var elem = notifications_seen.find(a => a.includes(body.toLowerCase()));
     if (typeof elem === "undefined") {
         chrome.notifications.create('', {
-            title: 'Just wanted to notify you',
-            message: 'KEYWORD MATCHED : ' + body,
+            title: '✨ Just wanted to notify you',
+            message: '🔔 Matched : ' + body,
             iconUrl: '/icon-128x128.png',
             type: 'basic'
         });
@@ -113,8 +113,8 @@ chrome.runtime.onMessage.addListener(function (request, response, _sendResponse)
         chats_text = request.chats_list;
     if (request.message == "loaded")
         chrome.notifications.create('', {
-            title: 'Meet Notify',
-            message: 'Extension loaded Successfully! :)',
+            title: 'Meet Notify : ' + request.url,
+            message: 'Loaded Successfully!😀',
             iconUrl: '/icon-128x128.png',
             type: 'basic'
         });

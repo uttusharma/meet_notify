@@ -1,4 +1,4 @@
-var observing = false
+var observing = false;
 var keywords = [];
 var chatTexts = [];
 
@@ -17,6 +17,7 @@ for (let i = 0; i < chats.length; i++) {
 
 chrome.runtime.sendMessage({
     message: "loaded",
+    url: window.location.href
 });
 
 chrome.runtime.sendMessage({
