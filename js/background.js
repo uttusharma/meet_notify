@@ -63,6 +63,8 @@ chrome.tabs.query({
                 chrome.tabs.executeScript(tab.id, {
                     file: './js/foreground.js'
                 }, () => {});
+                const code = codeRegex.exec(tab.url)[0];
+                meetTabs.set(tab.id, code);
             }
         }
         // tabs.forEach(function (tab) {
