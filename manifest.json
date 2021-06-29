@@ -1,7 +1,7 @@
 {
     "name": "Meet Notify",
     "description": "This Extension will notify whenever a certain keyword arrives in meet chat.",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "manifest_version": 2,
     "icons": {
         "16": "./icons/icon-16x16.png",
