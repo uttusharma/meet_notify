@@ -63,6 +63,8 @@ chrome.tabs.query({
                 chrome.tabs.executeScript(tab.id, {
                     file: './js/foreground.js'
                 }, () => {});
+                const code = codeRegex.exec(tab.url)[0];
+                meetTabs.set(tab.id, code);
             }
         }
         // tabs.forEach(function (tab) {
@@ -116,7 +118,7 @@ function showNotification(body) {
 }
 
 function matchKeywords() {
-    console.log("___" + user_keywords);
+    // console.log("___" + user_keywords);
     for (var i = 0; i < user_keywords.length; i++) {
         var elem = chats_text.find(a => a.includes(user_keywords[i].toLowerCase()));
 
