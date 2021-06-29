@@ -1,61 +1,48 @@
 {
     "name": "Meet Notify",
     "description": "This Extension will notify whenever a certain keyword arrives in meet chat.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "manifest_version": 2,
     "icons": {
-        "16": "./icon-16x16.png",
-        "32": "./icon-32x32.png",
-        "48": "./icon-48x48.png",
-        "128": "./icon-128x128.png"
+        "16": "./icons/icon-16x16.png",
+        "32": "./icons/icon-32x32.png",
+        "48": "./icons/icon-48x48.png",
+        "128": "./icons/icon-128x128.png"
     },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; script-src-elem 'self' https:",
     "background": {
         "scripts": [
-            "./background.js"
+            "js/background.js"
         ],
-        "persistent": false
-    },
-    "externally_connectable": {
-        "matches": [
-            "https://meet.google.com/*"
-        ],
-        "exclude_matches": [
-            "https://meet.google.com/*/quality*"
-        ]
+        "persistent": true
     },
     "content_scripts": [
         {
-            "run_at": "document_end",
-            "matches": [
-                "https://meet.google.com/*"
-            ],
-            "exclude_matches": [
-                "https://meet.google.com/*/quality*"
+            "js": [
+                "js/foreground.js"
             ],
             "css": [
-                "style.css"
+                "css/style.css"
             ],
-            "js": [
-                "foreground.js"
-            ]
+            "matches": [
+                "*://meet.google.com/*-*-*"
+            ],
+            "run_at": "document_idle",
+            "all_frames": false
         }
     ],
     "page_action": {
-        "matches": [
-            "https://meet.google.com/*",
-            "http://meet.google.com//*"
-        ],
         "default_icon": {
-            "16": "./icon-16x16.png",
-            "32": "./icon-32x32.png"
+            "16": "./icons/icon-16x16.png",
+            "32": "./icons/icon-32x32.png"
         },
-        "default_popup": "popup.html"
+        "default_popup": "html/popup.html"
     },
-    "options_page": "./options.html",
+    "options_page": "html/options.html",
     "permissions": [
         "tabs",
-        "https://meet.google.com//*",
         "notifications",
-        "storage"
+        "storage",
+        "*://meet.google.com/**-**-**"
     ]
 }

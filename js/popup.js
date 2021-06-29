@@ -1,6 +1,6 @@
 var taskInput = document.getElementById("new-task"); //new-task
 var addButton = document.getElementsByTagName("button")[0]; //first button
-var cleanButton = document.getElementById("cleanerbtn"); 
+var cleanButton = document.getElementById("cleanerbtn");
 var incompleteTasksHolder = document.getElementById("incomplete-tasks"); //incomplete-tasks
 var completedTasksHolder = document.getElementById("completed-tasks"); //completed-tasks
 
@@ -23,27 +23,31 @@ function isNotEmpty(field) {
 }
 
 
-var clean = function (){
+var clean = function () {
 	console.log("Cleaning Notifications");
 	var port = chrome.extension.connect({
 		name: "Sample Communication"
 	});
-	port.postMessage({message : "clean"});
+	port.postMessage({
+		message: "clean"
+	});
 	alert("Done Cleaning");
 };
 
-function saveToLocal(){
+function saveToLocal() {
 	var keywordList = document.getElementById("incomplete-tasks").querySelectorAll('li');
 	var keywords = [];
 	keywordList.forEach((item, index) => {
 		keywords.push(item.querySelector("label").innerText);
-	  });
+	});
 	console.log(keywords);
-	chrome.storage.local.set({ "keywords": keywords }, function(){
+	chrome.storage.local.set({
+		"keywords": keywords
+	}, function () {
 		//  Data's been saved boys and girls, go on home
 		console.log("Data's been saved boys and girls, go on home");
 	});
-	
+
 }
 
 
@@ -98,7 +102,7 @@ var addTask = function () {
 		bindTaskEvents(listItem, taskCompleted);
 		saveToLocal();
 		taskInput.value = "";
-		
+
 	}
 };
 
@@ -176,9 +180,6 @@ var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
 	checkBox.onchange = checkBoxEventHandler;
 };
 
-// var ajaxRequest = function() {
-// 	console.log("AJAX request");
-// }
 
 //Set the click handler to the addTask function
 addButton.addEventListener("click", addTask);
@@ -200,5 +201,3 @@ for (var i = 0; i < completedTasksHolder.children.length; i++) {
 	//bind events to list item's children (taskIncomplete)
 	bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
 }
-
-

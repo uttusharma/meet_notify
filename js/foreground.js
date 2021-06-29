@@ -42,14 +42,11 @@ function setChatObserver(mutations) {
     for (let mutation of mutations) {
         for (let addedNode of mutation.addedNodes) {
             if (addedNode.nodeName === 'DIV') {
-
                 let int_chat = addedNode.querySelector('.Zmm6We');
                 if (int_chat && int_chat.lastChild) {
                     let int_text1 = int_chat.lastChild.className;
                     if (int_text1 === "oIy2qc") {
                         let int_text2 = int_chat.lastChild.getAttribute('data-message-text');
-                        // console.log(int_text);
-
                         chatTexts.push(int_text2);
                         chrome.runtime.sendMessage({
                             message: "chats",
@@ -85,7 +82,7 @@ function setChatObserver(mutations) {
 
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-const observer = new MutationObserver(setChatObserver);
+var observer = new MutationObserver(setChatObserver);
 
 
 
