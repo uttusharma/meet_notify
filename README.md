@@ -1,6 +1,6 @@
 # Meet Notify : Chrome Extension
 
-![alt text](https://github.com/uttusharma/meet_notify/blob/master/icon-128x128.png?raw=true)
+![alt text](https://github.com/uttusharma/meet_notify/blob/master/icons/icon-128x128.png?raw=true)
 
 A chrome extension that will listen to given keywords in google meet chat and sends a notification whenever a keyword is detected in the google meet chat.
 
